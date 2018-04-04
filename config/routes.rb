@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admins/index'
+
   get 'users/index'
 
   get 'users/show'
