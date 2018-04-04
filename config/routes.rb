@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
   resources :carts
   resources :products
   devise_for :users
