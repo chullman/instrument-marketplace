@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'users/show'
 
+  get ':controller(/:action)' 
+
   resources :carts
   resources :products
   devise_for :users, :controllers => { registrations: 'registrations' }
