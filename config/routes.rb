@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+
+  resources :carts
+  resources :products
+  devise_for :users, :controllers => { registrations: 'registrations' }
+  root to: "products#index"
+
   get 'admins/index'
 
   get 'users/index'
@@ -7,9 +13,5 @@ Rails.application.routes.draw do
 
   get ':controller(/:action)' 
 
-  resources :carts
-  resources :products
-  devise_for :users, :controllers => { registrations: 'registrations' }
-  root to: "products#index"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
