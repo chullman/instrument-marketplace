@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  before_action :set_cart, only: [:show, :edit, :update, :destroy, :update_quantity_in_cart]
   before_action :is_signed_in, only: [:index]
 
 
@@ -29,6 +29,18 @@ class CartsController < ApplicationController
       end
 
     redirect_to products_path
+  end
+
+  def update_quantity_in_cart
+    if current_user.role == "admin"
+      @cart.update(cart_params)
+    else
+      if current_user.id == @cart.user_id
+        @cart.update(cart_params)
+      end
+    end
+    redirect_to carts_path
+    
   end
 
   def index

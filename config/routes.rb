@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
   post '/carts/add_to_cart/:id', to: 'carts#add_to_cart', as: 'add_to_cart'
 
+  put '/carts/update_quantity_in_cart/:id', to: 'carts#update_quantity_in_cart', as: 'update_quantity_in_cart'
+
   get ':controller(/:action)'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

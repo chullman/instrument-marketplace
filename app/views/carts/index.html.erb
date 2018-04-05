@@ -11,12 +11,30 @@
       <tr>
         <td><h2>Cart for: <%= cart.user.email %></h2></td>
       </tr>
+        <tr>
+          <th>Name</th>
+          <th>Image</th>
+        
+          <th>Quantity</th>
+          
+    </tr>
       <% end %>
       <tr>
         
         <td><%= cart.product.name %></td>
         <td><%= image_tag cart.product.image_url(:thumb) %></td>
         <td><%= cart.quantity %></td>
+
+        <%= form_for cart, url: update_quantity_in_cart_path(cart), :method => :put do |f| %>
+          <td class="field">
+            <%= f.label :quantity %>
+            <%= f.number_field :quantity, id: :cart_quantity %>
+          </td>
+          <td class="actions">
+            <%= f.submit %>
+          </td>
+        <% end %>
+
       
 
         <td><%= link_to 'Delete From Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
