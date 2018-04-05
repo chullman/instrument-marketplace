@@ -1,9 +1,33 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
 
+
+
   # GET /carts
   # GET /carts.json
   def add_to_cart
+
+    @carts = Cart.all
+
+    @cart = @carts.where(product_id: params[:id]).first
+    if @cart.nil?
+      @cart = Cart.new
+
+      if @cart.quantity == nil
+        @cart.quantity = 0
+      end
+  
+      @cart.product_id = params[:id]
+      @cart.user_id = current_user.id
+      @cart.quantity += 1
+      @cart.save
+    else
+      @cart.quantity += 1
+
+      @cart.save
+    end
+
+    redirect_to products_path
   end
 
   def index
