@@ -57,3 +57,12 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "devise", "~> 4.4"
 
  gem 'wdm', '>= 0.1.0' if Gem.win_platform?
+
+
+gem 'figaro'
+
+# Added at 2018-04-05 11:38:38 +1000 by ChrisBook:
+gem "carrierwave", "~> 1.2"
+
+# Added at 2018-04-05 11:38:59 +1000 by ChrisBook:
+gem "cloudinary", "~> 1.9"
