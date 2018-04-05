@@ -22,7 +22,7 @@
       <% if product.visible == true %>
         <tr>
           <td><%= product.name %></td>
-          <td><%= image_tag product.image_url() %></td>
+          <td><%= image_tag product.image_url(:thumb) %></td>
           <td><%= product.price %></td>
           <td><%= product.quantity %></td>
           <td><%= product.description %></td>
