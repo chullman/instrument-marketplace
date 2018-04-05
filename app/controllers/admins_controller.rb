@@ -1,10 +1,7 @@
 class AdminsController < ApplicationController
-<<<<<<< HEAD
-=======
 
   before_action :restrict_to_admin, only: [:index, :edit_permissions, :update_permissions, :edit_enablement, :update_enablement, :edit_user_deletion, :destroy_user]
 
->>>>>>> admin-work2
   def index
 
   end
