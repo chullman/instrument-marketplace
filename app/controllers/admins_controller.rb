@@ -1,9 +1,7 @@
 class AdminsController < ApplicationController
-
   before_action :restrict_to_admin, only: [:index]
-
   def index
-    
+
   end
 
   def edit_permissions
@@ -24,7 +22,7 @@ class AdminsController < ApplicationController
   end
 
   private
-  
+
   def user_params
     params.require(:user).permit(:role)
   end
