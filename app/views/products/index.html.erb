@@ -18,27 +18,39 @@
 
   <tbody>
     <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= image_tag product.image_url() %></td>
-        <td><%= product.price %></td>
-        <td><%= product.quantity %></td>
-        <td><%= product.description %></td>
-        <td><%= product.category %></td>
-        <td><%= product.brand %></td>
-        <td><%= product.visible %></td>
-        <td><%= link_to 'Show', product %></td>
-        <% if user_signed_in?%>
-          <% if current_user.role == "admin" %>
-            <td><%= link_to 'Edit', edit_product_path(product) %></td>
+
+      <% if product.visible == true %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= image_tag product.image_url() %></td>
+          <td><%= product.price %></td>
+          <td><%= product.quantity %></td>
+          <td><%= product.description %></td>
+          <td><%= product.category %></td>
+          <td><%= product.brand %></td>
+          <td><%= link_to 'Show', product %></td>
+          <% if user_signed_in?%>
+            <% if current_user.role == "admin" %>
+              <td><%= link_to 'Edit', edit_product_path(product) %></td>
+              <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+            <% end %>
           <% end %>
-        <% end %>
-        <% if user_signed_in?%>
-          <% if current_user.role == "admin" %>
-            <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+        </tr>
+      <%end%>  
+      <% if user_signed_in? %>
+        <% if product.visible != true && current_user.role == "admin" %>
+        <tr>
+          <td><%= product.name %> IS NOT VISIBLE</td>
+          <% if user_signed_in?%>
+            <% if current_user.role == "admin" %>
+              <td><%= link_to 'Edit', edit_product_path(product) %></td>
+              <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }%></td>
+            <% end %>
           <% end %>
-        <% end %>
-      </tr>
+        </tr>
+        <%end%>
+      <%end%>
+
     <% end %>
   </tbody>
 </table>

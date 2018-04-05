@@ -10,6 +10,9 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
+    if @product.visible != true
+      redirect_to products_path
+    end
   end
 
   # GET /products/new
