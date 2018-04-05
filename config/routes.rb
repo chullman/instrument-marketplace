@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :carts
   resources :products
   devise_for :users, :controllers => { registrations: 'registrations' }
-  
+
   root to: "products#index"
 
   get '/admins/edit_permissions', to: 'admins#edit_permissions', as: 'edit_permissions'
@@ -15,7 +15,9 @@ Rails.application.routes.draw do
   get '/admins/edit_user_deletion', to: 'admins#edit_user_deletion', as: 'edit_user_deletion'
   delete '/admins/destroy_user/:id', to: 'admins#destroy_user', as: 'destroy_user'
 
-  get ':controller(/:action)' 
+  post '/carts/add_to_cart/:id', to: 'carts#add_to_cart', as: 'add_to_cart'
+
+  get ':controller(/:action)'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

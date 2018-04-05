@@ -3,6 +3,9 @@ class CartsController < ApplicationController
 
   # GET /carts
   # GET /carts.json
+  def add_to_cart
+  end
+
   def index
     @carts = Cart.all
   end
@@ -13,9 +16,9 @@ class CartsController < ApplicationController
   end
 
   # GET /carts/new
-  def new
-    @cart = Cart.new
-  end
+  # def new
+  #   @cart = Cart.new
+  # end
 
   # GET /carts/1/edit
   def edit
@@ -53,13 +56,13 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1
   # DELETE /carts/1.json
-  def destroy
-    @cart.destroy
-    respond_to do |format|
-      format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @cart.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
