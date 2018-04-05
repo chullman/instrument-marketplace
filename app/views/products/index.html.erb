@@ -36,6 +36,8 @@
 
 <br>
 
-<% if current_user.role == "admin" %>
-  <%= link_to 'New Product', new_product_path %>
+<% if user_signed_in?%>
+  <% if current_user.role == "admin" %>
+    <%= link_to 'New Product', new_product_path %>
+  <% end %>
 <% end %>

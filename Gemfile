@@ -55,3 +55,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # Added at 2018-04-04 11:23:58 +1000 by ianmcateer:
 gem "devise", "~> 4.4"
+
+ gem 'wdm', '>= 0.1.0' if Gem.win_platform?
