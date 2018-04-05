@@ -1,31 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Carts</h1>
+
 
 <table>
-  <thead>
-    <tr>
-      <th>Quantity</th>
-      <th>User</th>
-      <th>Product</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
   <tbody>
+     <% @group_by_user_id = 0 %>
     <% @carts.each do |cart| %>
+      <% if @group_by_user_id != cart.user.id %>
       <tr>
-        <td><%= cart.quantity %></td>
-        <td><%= cart.user %></td>
-        <td><%= cart.product %></td>
-        <td><%= link_to 'Show', cart %></td>
-        <td><%= link_to 'Edit', edit_cart_path(cart) %></td>
-        <td><%= link_to 'Destroy', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><h2>Cart for: <%= cart.user.email %></h2></td>
       </tr>
+      <% end %>
+      <tr>
+        
+        <td><%= cart.product.name %></td>
+        <td><%= image_tag cart.product.image_url %></td>
+        <td><%= cart.quantity %></td>
+      
+
+        <td><%= link_to 'Delete From Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% @group_by_user_id = cart.user.id %>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Cart', new_cart_path %>

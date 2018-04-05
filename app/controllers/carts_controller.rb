@@ -1,6 +1,6 @@
 class CartsController < ApplicationController
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
-
+  before_action :is_signed_in, only: [:index]
 
 
   # GET /carts
@@ -9,29 +9,35 @@ class CartsController < ApplicationController
 
     @carts = Cart.all
 
-    @cart = @carts.where(product_id: params[:id]).first
-    if @cart.nil?
-      @cart = Cart.new
+    @cart = @carts.where(product_id: params[:id], user_id: current_user.id).first
 
-      if @cart.quantity == nil
-        @cart.quantity = 0
+      if !@cart.nil?
+        @cart.quantity += 1
+
+        @cart.save
+      else
+        @cart = Cart.new
+
+        if @cart.quantity == nil
+          @cart.quantity = 0
+        end
+    
+        @cart.product_id = params[:id]
+        @cart.user_id = current_user.id
+        @cart.quantity += 1
+        @cart.save
       end
-  
-      @cart.product_id = params[:id]
-      @cart.user_id = current_user.id
-      @cart.quantity += 1
-      @cart.save
-    else
-      @cart.quantity += 1
-
-      @cart.save
-    end
 
     redirect_to products_path
   end
 
   def index
-    @carts = Cart.all
+    if current_user.role != "admin"
+      @carts = Cart.all
+      @carts = @carts.where(user_id: current_user.id).order(:user_id)
+    else
+      @carts = Cart.all.order(:user_id)
+    end
   end
 
   # GET /carts/1
@@ -80,18 +86,24 @@ class CartsController < ApplicationController
 
   # DELETE /carts/1
   # DELETE /carts/1.json
-  # def destroy
-  #   @cart.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to carts_url, notice: 'Cart was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @cart.destroy
+    respond_to do |format|
+      format.html { redirect_to carts_url, notice: 'Item removed from cart' }
+      format.json { head :no_content }
+    end
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_cart
       @cart = Cart.find(params[:id])
+    end
+
+    def is_signed_in
+      if !user_signed_in?
+        redirect_to products_path
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
