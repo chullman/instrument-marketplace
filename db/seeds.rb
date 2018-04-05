@@ -16,3 +16,23 @@ user.username = 'admin'
 user.role = 'admin'
 user.disabled = false
 user.save!
+
+product=Product.new
+product.name = 'YAMAHA CS40 STUDENT CLASSICAL GUITAR'
+product.price = 165.00
+product.description = 'YAMAHA CS40 STUDENT CLASSICAL GUITAR'
+product.category = 'Acoustic'
+product.brand = 'YAMAHA'
+product.visible = true
+product.image = "/app/assets/images/product_1.jpg"
+product.save!
+
+product=Product.new
+product.name = 'FENDER CD-60S ACOUSTIC GUITAR - NATURAL'
+product.price = 382.00
+product.description = 'FENDER CD-60S ACOUSTIC GUITAR - NATURAL'
+product.category = 'Acoustic'
+product.brand = 'FENDER'
+product.visible = true
+product.image = "/app/assets/images/product_1.jpg"
+product.save!
