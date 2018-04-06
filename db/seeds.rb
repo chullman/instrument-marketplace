@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+
 user = User.new
 user.email = 'admin@admin.com'
 user.encrypted_password = ''
@@ -24,7 +25,7 @@ product.description = 'YAMAHA CS40 STUDENT CLASSICAL GUITAR'
 product.category = 'Acoustic'
 product.brand = 'YAMAHA'
 product.visible = true
-product.image = "/app/assets/images/product_1.jpg"
+product.image = Rails.root.join('app', 'assets', 'images', 'product_1.jpg').open
 product.save!
 
 product=Product.new
@@ -34,5 +35,5 @@ product.description = 'FENDER CD-60S ACOUSTIC GUITAR - NATURAL'
 product.category = 'Acoustic'
 product.brand = 'FENDER'
 product.visible = true
-product.image = "/app/assets/images/product_1.jpg"
+product.image = Rails.root.join('app', 'assets', 'images', 'product_1.jpg').open
 product.save!
