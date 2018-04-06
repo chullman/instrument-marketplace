@@ -21,6 +21,7 @@ user.save!
 product=Product.new
 product.name = 'YAMAHA CS40 STUDENT CLASSICAL GUITAR'
 product.price = 165.00
+product.quantity = 10
 product.description = 'YAMAHA CS40 STUDENT CLASSICAL GUITAR'
 product.category = 'Acoustic'
 product.brand = 'YAMAHA'
@@ -31,6 +32,7 @@ product.save!
 product=Product.new
 product.name = 'FENDER CD-60S ACOUSTIC GUITAR - NATURAL'
 product.price = 382.00
+product.quantity = 20
 product.description = 'FENDER CD-60S ACOUSTIC GUITAR - NATURAL'
 product.category = 'Acoustic'
 product.brand = 'FENDER'
