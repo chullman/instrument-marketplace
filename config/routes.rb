@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :products
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :users, :controllers => { registrations: 'registrations', sessions: 'sessions' }
 
   root to: "products#index"
 
