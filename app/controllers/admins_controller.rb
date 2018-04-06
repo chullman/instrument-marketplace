@@ -57,7 +57,9 @@ class AdminsController < ApplicationController
   end
 
   def restrict_to_admin
-    if current_user.role != "admin"
+    if !user_signed_in?
+      redirect_to products_path
+    elsif current_user.role != "admin"
       redirect_to products_path
     end
   end
