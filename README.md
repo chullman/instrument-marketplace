@@ -1,24 +1,38 @@
-# README
+# README - One-Sided Markeplace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+A cross-collaboration effort between Chris Hullman and Ian McAteer
 
-Things you may want to cover:
+Developed with Ruby on Rails v5.1.6
 
-* Ruby version
+Story points of functionality implemented: https://trello.com/b/FuI7N1fL
 
-* System dependencies
+## Setup
 
-* Configuration
+1) Clone the master repo
 
-* Database creation
+```
+git clone https://github.com/chullman/instrument-marketplace.git
+```
 
-* Database initialization
+2) Install gems in gemfile
 
-* How to run the test suite
+```
+bundle install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+3) Migrate into to local sqlite db used for development
 
-* Deployment instructions
+```
+rails db:migrate
+```
 
-* ...
+4) Seed in an admin user for the marketplace along with a couple sample products
+
+```
+rails db:seed
+```
+
+Email: admin@admin.com
+Password: admin
+
+Admin only portal is accessed in the /admins url. E.g. http://localhost:3000/admins
