@@ -30,7 +30,8 @@ class AdminsController < ApplicationController
   def update_enablement
     @user = User.find(params[:id])
     if @user.update(user_params)
-      if params[:user][:disabled] == true
+
+      if params[:user][:disabled] == "true"
         @user.disabled = true
       else
         @user.disabled = false

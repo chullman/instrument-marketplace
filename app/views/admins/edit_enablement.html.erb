@@ -8,7 +8,7 @@
   
 
     <%= form_for user, url: update_enablement_path(user), :method => :put do |f| %>
-      <%= f.radio_button :disabled, false, :checked => true %> 
+      <%= f.radio_button :disabled, false %> 
       <%= label :disabled_false, 'Active' %>
       <%= f.radio_button :disabled, true %>
       <%= label :disabled_true, 'Disabled' %>
