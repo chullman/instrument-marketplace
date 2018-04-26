@@ -9,7 +9,6 @@
 
 user = User.new
 user.email = 'admin@admin.com'
-user.encrypted_password = ''
 user.password = 'admin'
 user.first_name = 'admin'
 user.last_name = 'user'

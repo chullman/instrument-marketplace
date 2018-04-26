@@ -1,0 +1,78 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Local File",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/main.rb"
+    },
+    {
+      "name": "Listen for rdebug-ide",
+      "type": "Ruby",
+      "request": "attach",
+      "cwd": "${workspaceRoot}",
+      "remoteHost": "127.0.0.1",
+      "remotePort": "1234",
+      "remoteWorkspaceRoot": "${workspaceRoot}"
+    },
+    {
+      "name": "Rails server",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/rails",
+
+      // Custom
+      "pathToBundler": "C:\\Bitnami\rubystack-2.3.6-4\ruby\bin",
+      "env": {
+        "PATH": "C:\\Bitnami\rubystack-2.3.6-4/git\\cmd;C:\\Bitnami\rubystack-2.3.6-4/nginx;C:\\Bitnami\rubystack-2.3.6-4/DevKit\bin;C:\\Bitnami\rubystack-2.3.6-4/DevKit\\mingw\bin;C:\\Bitnami\rubystack-2.3.6-4/nodejs;C:\\Bitnami\rubystack-2.3.6-4/sphinx;C:\\Bitnami\rubystack-2.3.6-4/sqlite;C:\\Bitnami\rubystack-2.3.6-4\\imagemagick;C:/Bitnami/rubystack-2.3.6-4/php;C:\\Bitnami\rubystack-2.3.6-4/python;C:\\Bitnami\rubystack-2.3.6-4/python\\scripts;C:\\Bitnami\rubystack-2.3.6-4/mysql\bin;C:\\Bitnami\rubystack-2.3.6-4/postgresql/bin;C:\\Bitnami\rubystack-2.3.6-4\ruby\bin;C:\\Bitnami\rubystack-2.3.6-4/common\bin;%PATH%",
+        "NODE_PATH": "C:\\Bitnami\rubystack-2.3.6-4/nodejs/node_modules",
+        "GS_LIB": "C:\\Bitnami\rubystack-2.3.6-4/common\\lib",
+        "MAGICK_HOME": "C:\\Bitnami\rubystack-2.3.6-4\\imagemagick",
+        "MAGICK_CODER_MODULE_PATH": "C:\\Bitnami\rubystack-2.3.6-4\\imagemagick\\modules\\coders",
+        "PHPRC": "C:/Bitnami/rubystack-2.3.6-4/php",
+        "SSL_CERT_FILE": "C:\\Bitnami\rubystack-2.3.6-4/ruby\bin\\cacert.pem",
+        "OPENSSL_CONF": "C:\\Bitnami\rubystack-2.3.6-4/apache2/conf\\openssl.cnf"
+      },
+      
+      "args": [
+        "server"
+      ]
+    },
+    {
+      "name": "RSpec - all",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/rspec",
+      "args": [
+        "-I",
+        "${workspaceRoot}"
+      ]
+    },
+    {
+      "name": "RSpec - active spec file only",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/rspec",
+      "args": [
+        "-I",
+        "${workspaceRoot}",
+        "${file}"
+      ]
+    },
+    {
+      "name": "Cucumber",
+      "type": "Ruby",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "program": "${workspaceRoot}/bin/cucumber"
+    }
+  ]
+}
